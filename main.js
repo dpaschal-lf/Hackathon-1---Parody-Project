@@ -2,7 +2,7 @@ var global_result;
 var new_url;
 
 
-$("#search").click(function(){
+$("#red-pill").click(function(){
      google_search("");
      $.ajax({
 			dataType: 'json',
@@ -124,4 +124,3 @@ $(document).ready(function(){
     $(footer_area).append(footer);
     $('body').append(footer_area);
 });
->>>>>>> master
