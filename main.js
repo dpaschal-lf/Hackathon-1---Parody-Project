@@ -2,20 +2,6 @@ var global_result;
 var new_url;
 
 
-$("#red-pill").click(function(){
-     google_search("");
-     $.ajax({
-			dataType: 'json',
-			url: new_url,
-			success: function(result){
-				console.log('loaded',result);
-				global_result = result;
-				console.log('my videoId' , global_result.items[0].id.videoId);
-			}
-	});       
-});
-
-
 function build_query_string(search_info) {
        query_string_new = ("key=" + search_info["key"] + "&" + "q=" + search_info["q"] + "&" + "part=" + search_info["part"]);
     return query_string_new;
@@ -123,4 +109,17 @@ $(document).ready(function(){
 
     $(footer_area).append(footer);
     $('body').append(footer_area);
+
+    $("#red-pill").click(function(){
+        google_search("");
+        $.ajax({
+            dataType: 'json',
+            url: new_url,
+            success: function(result){
+                console.log('loaded',result);
+                global_result = result;
+                console.log('my videoId' , global_result.items[0].id.videoId);
+            }
+        });       
+    });
 });
