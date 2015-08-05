@@ -10,6 +10,7 @@ $("#search").click(function(){
 			success: function(result){
 				console.log('loaded',result);
 				global_result = result;
+				console.log('my videoId' , global_result.items[0].id.videoId);
 			}
 	});       
 });
