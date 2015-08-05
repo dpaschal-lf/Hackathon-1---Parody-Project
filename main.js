@@ -1,14 +1,19 @@
+var global_result;
+var new_url;
+
+
 $("#search").click(function(){
      google_search("");
-  //    $.ajax({
-		// 	dataType: 'json',
-		// 	url: script_search,
-		// 	success: function(result){
-		// 		console.log('loaded',result);
-		// });       
+     $.ajax({
+			dataType: 'json',
+			url: new_url,
+			success: function(result){
+				console.log('loaded',result);
+				global_result = result;
+			}
+	});       
 });
 
-var new_url;
 
 function build_query_string(search_info) {
        query_string_new = ("key=" + search_info["key"] + "&" + "q=" + search_info["q"] + "&" + "part=" + search_info["part"]);
