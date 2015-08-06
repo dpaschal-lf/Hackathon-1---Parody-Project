@@ -26,40 +26,36 @@ function google_search(type) {
     //     src: base_url + query_str
     // });
     // $('body').append(script_search);
-    
-    
 };
-// Dynamic Layout
 
-$(document).ready(function(){
+
+// Dynamic Layout
 
     // Header
     var header_area = $("<div>", {
-        class: "col-xs-12",
+        class: "col-xs-10",
+        id: "header-area",
     });
 
-
     $('body').append(header_area);
-
     $(header_area).addClass('search-title');
 
     var title = "Follow the white rabbit.";
     $.each(title.split(""), function(i, letter){
        setTimeout(function(){
            $(header_area).html($(header_area).html() + letter);
-       }, 200*i);
+       }, 300*i);
     });
 
     // Search Area
     var search_area = $("<div>", {
-        class: "col-xs-12",
-        id: "content-area",
+        class: "col-xs-8",
+        id: "search-area",
     });
 
     var search_bar = $("<input>", {
         type: "search",
         class: "search_input col-xs-12",
-        placeholder: "Enter Text Here",
     });
 
     $(search_area).append(search_bar);
@@ -87,34 +83,37 @@ $(document).ready(function(){
     });
 
     function add_videos(){
-    for (var i = 0; global_result.items.length; i++){
-         console.log(global_result.items[i].id.videoId);
-         youtube_id_no = global_result.items[i].id.videoId;
-        var frame = $("<iframe>",{
-            class: "col-xs-12 col-sm-6 col-md-4",
-            id: "ytplayer video-id" + i,
-            type: "text/html",
-            src: "https://www.youtube.com/v/" + youtube_id_no,
-        });
-        $(display_area).append(frame);
-        //console.log("i", i);
+        for (var i = 0; global_result.items.length; i++){
+             console.log(global_result.items[i].id.videoId);
+             youtube_id_no = global_result.items[i].id.videoId;
+            var frame = $("<iframe>",{
+                class: "col-xs-12 col-sm-6 col-md-4",
+                id: "ytplayer video-id" + i,
+                type: "text/html",
+                src: "https://www.youtube.com/v/" + youtube_id_no,
+            });
+            $(display_area).append(frame);
+            //console.log("i", i);
+        }
     }
-
-}
     
     $('body').append(display_area);
 
     // Footer
     var footer_area = $("<div>", {
-        class: "col-xs-12"
+        class: "col-xs-12",
+        id: "footer-area",
     });
 
     var footer = $("<div>", {
-        text: "This is our footer",
+        html: "Developed & Designed By:<br> <a href=''>Nichole Culp</a>, <a href=''>Cher Huang</a>, <a href=''>Darin Jacobson</a>, <a href=''>Alex Mattingley</a>",
+        class: "footer-text",
     });
 
     $(footer_area).append(footer);
     $('body').append(footer_area);
+
+$(document).ready(function(){
 
     $("#red-pill").click(function(){
         var enter_input = $(".search_input").val();
