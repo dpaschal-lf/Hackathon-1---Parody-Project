@@ -75,3 +75,8 @@ input[type=search] {
     border-top-color: #5c1b1b;
     background: #5c1b1b;
 }
+
+iframe {
+    width: 640px;
+    height: 390px;
+}

@@ -2,6 +2,7 @@ var global_result;
 var new_url;
 var youtube_id_no;
 var display_area;
+var click_number = 0;
 
 
 
@@ -106,55 +107,54 @@ function google_search(type, pill) {
 
 
 function add_videos(){
-    console.log("WTF");
-    for (var i = 0; i < global_result.items.length; i++){
-         console.log(global_result.items[i].id.videoId);
-         youtube_id_no = global_result.items[i].id.videoId;
-        var frame = $("<iframe>",{
+    $('body').append(display_area); // adds the display area
+    for (var i = 0; i < global_result.items.length; i++){ // for loop for every video we want to add to the screen
+         //console.log(global_result.items[i].id.videoId); // shows video ID of each video
+         youtube_id_no = global_result.items[i].id.videoId; // this is the unique video id from youTube
+        var frame = $("<iframe>",{ //creates the iframe, sizes it, and then plays the link (src) with the video ID number
             class: "col-xs-12 col-sm-6 col-md-4",
             id: "ytplayer video-id" + i,
             type: "text/html",
             src: "https://www.youtube.com/v/" + youtube_id_no,
+            //width: "640",
+            //height: "390"
         });
         $(display_area).append(frame);
         //console.log("i", i);
     }
-
 }
-$('body').append(display_area);
+//$('body').append(display_area);
 // Dynamic Layout
 
 $(document).ready(function(){
 
    
-    $("#red-pill").click(function(){
-        var which_pill = 0;
-        var enter_input = $(".search_input").val();
-        console.log(enter_input);
-        google_search(enter_input, which_pill);
-        $.ajax({
+    $("#red-pill").click(function(){ //upon clicking the red pill
+        var which_pill = 0; //sets red pill to 0
+        var enter_input = $(".search_input").val(); //finds user input in search screen
+        google_search(enter_input, which_pill); //calls google_search function and passes user input and red pill (0)
+        $.ajax({ //api call to ajax
             dataType: 'json',
-            url: new_url,
+            url: new_url, //url tht was created
             success: function(result){
                 global_result = result;
-                add_videos();
+                add_videos(); //calls add_videos function to put all of the video id's in a player
 
 
             }
         });       
     });
-    $("#blue-pill").click(function(){
-        var which_pill = 1;
-        var enter_input = $(".search_input").val();
-        console.log(enter_input);
-        google_search(enter_input, which_pill);
-        $.ajax({
+    $("#blue-pill").click(function(){ //upon clicking the blue pill
+        var which_pill = 1; //sets blue pill to 1
+        var enter_input = $(".search_input").val(); //finds user input in search screen
+        google_search(enter_input, which_pill); //calls google_search function and passes user input and blue pill(1)
+        $.ajax({ //api call to ajax
             dataType: 'json',
-            url: new_url,
+            url: new_url, //url that was created
             success: function(result){
                 global_result = result;
-                add_videos();
-            }
+                add_videos(); //calls add_videos function to put all of the video id's in a player
+            } 
         });
 });
 
