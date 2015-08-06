@@ -1,12 +1,91 @@
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>JS Bin</title>
+    <meta charset="UTF-8">
+    <title>White Rabbit</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <!-- Computer Font -->
+    <link href='http://fonts.googleapis.com/css?family=Press+Start+2P' rel='stylesheet' type='text/css'>
+    <script language="JavaScript" type="text/javascript" src="main.js"></script>
+
+    <script>
+
+$(document).ready(function(){
+for (var i = 0; i<= 5; i++){
+        var frame = $("<frame>",{
+            class: "col-xs-12 col-sm-6 col-md-4",
+           id: "ytplayer video-id" + i,
+            type: "text/html",
+            src: "https://www.youtube.com/v/B9vPoCOP7oY",
+        });
+        $(display_area).append(frame);
+        console.log("i", i);
+    }
+}
+//need specify play button name;
+$('button').click(function()
+{
+//occupy whole screen while clicked,jquery selects whichever is playing 
+        $('#video-id'+i).css({
+            opacity:1;
+            position: 'absolute',
+            width: $(window).width(),
+            height: $(window).height()
+        });
+
+   }
+
+    </script>
+    <style type="text/css">
+     #video-id0 {
+           
+            opacity:0.65;
+
+        }
+        #video-id2{
+           
+            opacity:0.65;
+
+        }
+        #video-id3{
+           
+            opacity:0.65;
+
+        }
+         #video-id4{
+           
+        opacity:0.65; 
+
+
+        }
+
+       #video-id5 {
+           
+            opacity:0.65;
+
+        }
+        #video-id6 {      
+          opacity: 0.65;
+        }
+    </style>
 </head>
 <body>
-	<button type="button" id="search">Search</button>
-	<script src = "https://code.jquery.com/jquery-2.1.4.min.js"></script>
-  <script src="main.js"></script>
+
 </body>
 </html>
+
+
+
+
+
+
