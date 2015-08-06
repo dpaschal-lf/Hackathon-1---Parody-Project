@@ -34,17 +34,25 @@ for (var i = 0; i<= 5; i++){
 }
 //need specify play button name;
 $('button').click(function()
-{
-//occupy whole screen while clicked,jquery selects whichever is playing 
-        $('#video-id'+i).css({
+{  
+    function fullscreen(){
+    $('#video-id'+i).css({
             opacity:1;
             position: 'absolute',
             width: $(window).width(),
             height: $(window).height()
         });
+}
+        
+    $(window).resize(function() {
+        fullscreen();         
+    });
 
-   }
+    fullscreen();
 
+});
+//occupy whole screen while clicked,jquery selects whichever is playing 
+      
     </script>
     <style type="text/css">
      #video-id0 {
