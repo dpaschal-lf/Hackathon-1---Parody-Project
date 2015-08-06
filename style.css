@@ -1,15 +1,42 @@
 *{
     margin: 0px;
     padding: 0px;
-    border: 1px solid black;
+    /*border: 1px solid black;*/
+    font-family: 'VT323', serif;
+    color: #00FF66;
+}
+
+body {
+    background-image: url("http://freedwallpaper.com/wp-content/uploads/2014/11/matrix-tribute-background_1920x1080_226-hd.jpg");
+}
+
+#header-area {
+    margin: 1em;
+}
+
+#search-area {
+    margin: 0em 10em 0em 10em;
+    padding: 2em;
 }
 
 .search-title {
-    font-size: 200%;
+    font-size: 5em;
+    background-color: black;
+    text-shadow: 0 0 10px #00ff66, 0 0 20px #00ff66;
 }
 
 input[type=search] {
     height: 2em;
+    border: 1px solid #00FF66;
+    background-color: black;
+    font-size: xx-large;
+    text-shadow: 0 0 10px #00ff66, 0 0 15px #00ff66;
+
+
+}
+
+#blue-pill, #red-pill {
+    margin: 1em;
 }
 
 .blue-button {
@@ -74,4 +101,72 @@ input[type=search] {
 .red-button:active {
     border-top-color: #5c1b1b;
     background: #5c1b1b;
+}
+
+#footer-area {
+    background-color: black;
+    margin: 1em;
+}
+
+.footer-text {
+    font-size: medium;
+    text-align: center;
+    text-shadow: 0 0 10px #00ff66, 0 0 20px #00ff66;
+}
+
+.footer-text a {
+    font-size: medium;
+    color: #00FF66;
+    text-align: center;
+    text-shadow: 0 0 10px #00ff66, 0 0 20px #00ff66;
+}
+.footer-text a:hover {
+    font-size: medium;
+    color: white;
+    text-align: center;
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff;
+}
+
+@media screen and (max-width: 726px) {
+    .search-title {
+        font-size: 3em;
+    }
+    #search-area {
+        margin: 0em 5em 0em 5em;
+        padding: 2em;
+    }
+    input[type=search] {
+        font-size: large;
+    }
+    #blue-pill, #red-pill {
+        margin: 1em;
+    }
+    .blue-button, .red-button {
+        padding: 3.5px 20px;
+    }
+    .footer-text, .footer-text a, .footer-text a:hover {
+        font-size: small;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .search-title {
+        font-size: 1em;
+    }
+    #search-area {
+        margin: 0em 4em 0em 4em;
+        padding: 1em;
+    }
+    input[type=search] {
+        font-size: small;
+    }
+    #blue-pill, #red-pill {
+        margin: .5em;
+    }
+    .blue-button, .red-button {
+        padding: 1.5px 10px;
+    }
+    .footer-text, .footer-text a, .footer-text a:hover {
+        font-size: xx-small;
+    }
 }
