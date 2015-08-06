@@ -14,7 +14,6 @@ function google_search(type) {
     var search_obj = {
         key: 'AIzaSyC3I7ZOg87Kl7GFmiQf_n_aKrzYfbc0puo',
         q: "allintitle:'parody'" + " " + "+" + " " + "'" + type + "'",
-        //q: "allintitle: 'spoof' + 'rebecca black'",
         part: 'snippet',
         maxResults: '6'
     }
@@ -22,10 +21,6 @@ function google_search(type) {
     console.log(query_str);
     new_url = base_url + query_str
     console.log(new_url);
-    // var script_search = $('<script>', {
-    //     src: base_url + query_str
-    // });
-    // $('body').append(script_search);
     
     
 };
@@ -97,7 +92,6 @@ $(document).ready(function(){
             src: "https://www.youtube.com/v/" + youtube_id_no,
         });
         $(display_area).append(frame);
-        //console.log("i", i);
     }
 
 }
@@ -124,10 +118,7 @@ $(document).ready(function(){
             dataType: 'json',
             url: new_url,
             success: function(result){
-                //console.log('loaded',result);
                 global_result = result;
-                //console.log('my videoId' , global_result.items[0].id.videoId);
-                //console.log(global_result.items.length);
                 add_videos();
 
 
