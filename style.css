@@ -14,6 +14,10 @@ body {
     margin: 1em;
 }
 
+#instruction-area {
+    background-color: black;
+}
+
 #search-area {
     margin: 0em 10em 0em 10em;
     padding: 2em;

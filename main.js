@@ -47,7 +47,7 @@ function google_search(type, pill) {
 
      // Header
     var header_area = $("<div>", {
-        class: "col-xs-10",
+        class: "col-xs-10 col-xs-offset-1",
         id: "header-area",
     });
 
@@ -59,6 +59,21 @@ function google_search(type, pill) {
        setTimeout(function(){
            $(header_area).html($(header_area).html() + letter);
        }, 300*i);
+    });
+
+    var instruction_area = $("<div>", {
+        class: "col-xs-10 col-xs-offset-1",
+        id: "instruction-area",
+    });
+
+    $('body').append(instruction_area);
+    $(header_area).addClass('search-title');
+
+    var welcome = "Instructions: You click the blue pill, the story ends. You wake up and see what you want to see. You click the red pill, you stay in YouTube land, and I show you how deep the rabbit hole goes. ";
+    $.each(welcome.split(""), function(i, letter){
+        setTimeout(function(){
+            $(instruction_area).html($(instruction_area).html() + letter);
+        }, 100*i);
     });
 
     // Search Area
@@ -96,7 +111,7 @@ function google_search(type, pill) {
     });
 
     function add_videos(){
-        for (var i = 0; global_result.items.length; i++){
+        for (var i = 0; i < global_result.items.length; i++){
              console.log(global_result.items[i].id.videoId);
              youtube_id_no = global_result.items[i].id.videoId;
             var frame = $("<iframe>",{
