@@ -1,6 +1,8 @@
 var global_result;
 var new_url;
 var youtube_id_no;
+var display_area;
+
 
 
 function build_query_string(search_info) {
@@ -8,9 +10,10 @@ function build_query_string(search_info) {
     return query_string_new;
 }
 
-function google_search(type) {
-    console.log("Yes");
+function google_search(type, pill) {
+    console.log(pill);
     var base_url = 'https://www.googleapis.com/youtube/v3/search?';
+    if (pill == 0){
     var search_obj = {
         key: 'AIzaSyC3I7ZOg87Kl7GFmiQf_n_aKrzYfbc0puo',
         q: "allintitle:'parody'" + " " + "+" + " " + "'" + type + "'",
@@ -18,20 +21,31 @@ function google_search(type) {
         part: 'snippet',
         maxResults: '6'
     }
+}
+    else {
+        console.log("blue pill");
+        var search_obj = {
+        key: 'AIzaSyC3I7ZOg87Kl7GFmiQf_n_aKrzYfbc0puo',
+        q: "allintitle:" + "'" + type + "'",
+        //q: "allintitle: 'spoof' + 'rebecca black'",
+        part: 'snippet',
+        maxResults: '6'
+        }
+    }
     var query_str = build_query_string(search_obj);
     console.log(query_str);
     new_url = base_url + query_str
     console.log(new_url);
-    // var script_search = $('<script>', {
-    //     src: base_url + query_str
-    // });
-    // $('body').append(script_search);
-};
+    
+}
 
+// Video Display
+    display_area = $("<div>", {
+        class: "row",
+        id: "video-area",
+    });
 
-// Dynamic Layout
-
-    // Header
+     // Header
     var header_area = $("<div>", {
         class: "col-xs-10",
         id: "header-area",
@@ -76,12 +90,12 @@ function google_search(type) {
 
     $(search_area).append(red_button, blue_button);
 
-    // Video Display
-    var display_area = $("<div>", {
-        class: "row",
-        id: "video-area",
+    // Footer
+    var footer_area = $("<div>", {
+        class: "col-xs-12"
     });
 
+<<<<<<< HEAD
     function add_videos(){
         for (var i = 0; global_result.items.length; i++){
              console.log(global_result.items[i].id.videoId);
@@ -109,28 +123,72 @@ function google_search(type) {
         html: "Developed & Designed By:<br> <a href=''>Nichole Culp</a>, <a href=''>Cher Huang</a>, <a href=''>Darin Jacobson</a>, <a href=''>Alex Mattingley</a>",
         class: "footer-text",
     });
+=======
+    var footer = $("<div>", {
+        text: "This is our footer",
+    });
 
     $(footer_area).append(footer);
     $('body').append(footer_area);
 
+
+function add_videos(){
+    console.log("WTF");
+    for (var i = 0; i < global_result.items.length; i++){
+         console.log(global_result.items[i].id.videoId);
+         youtube_id_no = global_result.items[i].id.videoId;
+        var frame = $("<iframe>",{
+            class: "col-xs-12 col-sm-6 col-md-4",
+            id: "ytplayer video-id" + i,
+            type: "text/html",
+            src: "https://www.youtube.com/v/" + youtube_id_no,
+        });
+        $(display_area).append(frame);
+        //console.log("i", i);
+    }
+
+}
+$('body').append(display_area);
+// Dynamic Layout
+>>>>>>> blue-vs-red-pill
+
 $(document).ready(function(){
 
+<<<<<<< HEAD
+$(document).ready(function(){
+
+=======
+   
+>>>>>>> blue-vs-red-pill
     $("#red-pill").click(function(){
+        var which_pill = 0;
         var enter_input = $(".search_input").val();
         console.log(enter_input);
-        google_search(enter_input);
+        google_search(enter_input, which_pill);
         $.ajax({
             dataType: 'json',
             url: new_url,
             success: function(result){
-                //console.log('loaded',result);
                 global_result = result;
-                //console.log('my videoId' , global_result.items[0].id.videoId);
-                //console.log(global_result.items.length);
                 add_videos();
 
 
             }
         });       
     });
+    $("#blue-pill").click(function(){
+        var which_pill = 1;
+        var enter_input = $(".search_input").val();
+        console.log(enter_input);
+        google_search(enter_input, which_pill);
+        $.ajax({
+            dataType: 'json',
+            url: new_url,
+            success: function(result){
+                global_result = result;
+                add_videos();
+            }
+        });
+});
+
 });
