@@ -131,6 +131,11 @@ input[type=search] {
     text-shadow: 0 0 10px #fff, 0 0 20px #fff;
 }
 
+iframe.col-md-4 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
 @media screen and (max-width: 726px) {
     .search-title {
         font-size: 3em;
