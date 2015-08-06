@@ -18,77 +18,17 @@
     <link href='http://fonts.googleapis.com/css?family=Press+Start+2P' rel='stylesheet' type='text/css'>
     <script language="JavaScript" type="text/javascript" src="main.js"></script>
 
-    <script>
-
-$(document).ready(function(){
-for (var i = 0; i<= 5; i++){
-        var frame = $("<frame>",{
-            class: "col-xs-12 col-sm-6 col-md-4",
-           id: "ytplayer video-id" + i,
-            type: "text/html",
-            src: "https://www.youtube.com/v/B9vPoCOP7oY",
-        });
-        $(display_area).append(frame);
-        console.log("i", i);
-    }
-}
-//need specify play button name;
-$('button').click(function()
-{  
-    function fullscreen(){
-    $('#video-id'+i).css({
-            opacity:1;
-            position: 'absolute',
-            width: $(window).width(),
-            height: $(window).height()
-        });
-}
-        
-    $(window).resize(function() {
-        fullscreen();         
-    });
-
-    fullscreen();
-
-});
-//occupy whole screen while clicked,jquery selects whichever is playing 
-      
-    </script>
-    <style type="text/css">
-     #video-id0 {
-           
-            opacity:0.65;
-
-        }
-        #video-id2{
-           
-            opacity:0.65;
-
-        }
-        #video-id3{
-           
-            opacity:0.65;
-
-        }
-         #video-id4{
-           
-        opacity:0.65; 
-
-
-        }
-
-       #video-id5 {
-           
-            opacity:0.65;
-
-        }
-        #video-id6 {      
-          opacity: 0.65;
-        }
-    </style>
+    
 </head>
 <body>
-
+<div id="modal_frame">
+    <div id="modal_close">X</div>
+    <div id="modal_message">I'm a modal</div>
+</div>
+<div id="modal_shadow">
+</div>
+<div> <button type="button" id="modal_button">Movie mode</button>
+</div>
 </body>
 </html>
 
