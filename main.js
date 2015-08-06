@@ -1,9 +1,10 @@
 var global_result;
 var new_url;
+var youtube_id_no;
 
 
 function build_query_string(search_info) {
-       query_string_new = ("key=" + search_info["key"] + "&" + "q=" + search_info["q"] + "&" + "part=" + search_info["part"]);
+       query_string_new = ("key=" + search_info["key"] + "&" + "q=" + search_info["q"] + "&" + "part=" + search_info["part"] + "&" + "maxResults=" + search_info["maxResults"]);
     return query_string_new;
 }
 
@@ -12,8 +13,10 @@ function google_search(type) {
     var base_url = 'https://www.googleapis.com/youtube/v3/search?';
     var search_obj = {
         key: 'AIzaSyC3I7ZOg87Kl7GFmiQf_n_aKrzYfbc0puo',
-        q: type + 'spoof',
-        part: 'snippet'
+        q: "allintitle:'parody'" + " " + "+" + " " + "'" + type + "'",
+        //q: "allintitle: 'spoof' + 'rebecca black'",
+        part: 'snippet',
+        maxResults: '6'
     }
     var query_str = build_query_string(search_obj);
     console.log(query_str);
@@ -83,18 +86,21 @@ $(document).ready(function(){
         id: "video-area",
     });
 
-
-
-    for (var i = 0; i<= 5; i++){
+    function add_videos(){
+    for (var i = 0; global_result.items.length; i++){
+         console.log(global_result.items[i].id.videoId);
+         youtube_id_no = global_result.items[i].id.videoId;
         var frame = $("<iframe>",{
             class: "col-xs-12 col-sm-6 col-md-4",
             id: "ytplayer video-id" + i,
             type: "text/html",
-            src: "https://www.youtube.com/v/B9vPoCOP7oY",
+            src: "https://www.youtube.com/v/" + youtube_id_no,
         });
         $(display_area).append(frame);
-        console.log("i", i);
+        //console.log("i", i);
     }
+
+}
     
     $('body').append(display_area);
 
@@ -111,14 +117,20 @@ $(document).ready(function(){
     $('body').append(footer_area);
 
     $("#red-pill").click(function(){
-        google_search("");
+        var enter_input = $(".search_input").val();
+        console.log(enter_input);
+        google_search(enter_input);
         $.ajax({
             dataType: 'json',
             url: new_url,
             success: function(result){
-                console.log('loaded',result);
+                //console.log('loaded',result);
                 global_result = result;
-                console.log('my videoId' , global_result.items[0].id.videoId);
+                //console.log('my videoId' , global_result.items[0].id.videoId);
+                //console.log(global_result.items.length);
+                add_videos();
+
+
             }
         });       
     });
